@@ -1,5 +1,5 @@
 /*
-    Copyright 2018 InterMention (https://intermention.com/)
+    Copyright 2019 InterMention (https://intermention.com/)
 
     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"),
     to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense,
@@ -90,8 +90,11 @@ window.onload = function() {
         barCss += "filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 );";
         bar.style.cssText = barCss;
 
+
+        var bar_inner = document.createElement('div');
+
         var textnode = document.createTextNode(scb_settings['agreementText'] + ' ');
-        bar.appendChild(textnode);
+        bar_inner.appendChild(textnode);
 
         if (scb_settings['privacyLink'] != '') {
             var link = document.createElement('a');
@@ -99,7 +102,7 @@ window.onload = function() {
             link.style.cssText = 'color: #333333';
             var linkText = document.createTextNode(scb_settings['privacyLinkText']);
             link.appendChild(linkText);
-            bar.appendChild(link);
+            bar_inner.appendChild(link);
         }
 
         var agreeBtn = document.createElement('button');
@@ -123,7 +126,7 @@ window.onload = function() {
         agreeBtn.style.cssText = agreeBtnCss;
         var btnText = document.createTextNode(scb_settings['agreeBtnText']);
         agreeBtn.appendChild(btnText);
-        bar.appendChild(agreeBtn);
+        bar_inner.appendChild(agreeBtn);
 
         var adjustBtn = document.createElement('button');
         adjustBtn.id = 'scb-cookie-adjust';
@@ -146,7 +149,9 @@ window.onload = function() {
         adjustBtn.style.cssText = adjustBtnCss;
         var btnText = document.createTextNode(scb_settings['adjustBtnText']);
         adjustBtn.appendChild(btnText);
-        bar.appendChild(adjustBtn);
+        bar_inner.appendChild(adjustBtn);
+
+        bar.appendChild(bar_inner);
 
         document.body.appendChild(bar);
 
